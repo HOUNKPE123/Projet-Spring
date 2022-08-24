@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"  >
+
+</head>
+<body>
+<div class="container">
+    <h2> FORMULAIRE DE MODIFICATION DE MISE A JOUR</h2>
+
+    <form th:action="@{/reservation/update}" th:object="${UneReservation}" method="post">
+        <div class="mb-3">
+            <input type="hidden" th:field="*{id}" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label >DATTE DE DEBUT DE LA RESERVATION</label>
+            <input type="date" th:field="*{dateDebut}" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label >DATTE DE FIN DE LA RESERVATION</label>
+            <input type="date" th:field="*{dateFin}" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">SALLE A RESERVER</label>
+            <select class="form-control" name="salleId" required  placeholder="Cliquer pour chercher" >
+                <option value="">--Choisissez votre salle a reserver--</option>
+                <option th:each="salle:${listeSalle}"
+                        th:value="${salle.id}"
+                        th:utext="${salle.nom}">
+                </option>
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label >NOM DE LA MANIFESTATION</label>
+            <input type="text" th:field="*{nomManifestation}" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label >NOMBRE DE PERSONNE A RECEVOIR</label>
+            <input type="number" th:field="*{nbrPerso}" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label >NOM DU CLIENT OU DE L'ORGANISATION</label>
+            <input type="text" th:field="*{nomClient}" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label >ADRESSE DU CLIENT OU DE L'ORGANISATION</label>
+            <input type="text" th:field="*{adressClient}" class="form-control" >
+        </div>
+
+        <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+    </form>
+
+</div>
+<script src="/js/bootstrap.bundle.min.js"/>
+</body>
+</html>

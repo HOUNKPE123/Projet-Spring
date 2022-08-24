@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet"  >
+
+</head>
+<body>
+<div class="container">
+  <h2> FORMULAIRE DE RESREVATION</h2>
+  <form th:action="@{/reservation/save}" method="post">
+
+
+    <div class="mb-3">
+      <div class="form-group">
+        <label>Salle</label>
+        <select class="form-control" name="SalleId" required  placeholder="Cliquer pour chercher" >
+          <option value="">--Selectionner votre salle--</option>
+          <option th:each="salle:${listeSalle}"
+                  th:value="${salle.id}"
+                  th:utext="${salle.nom}">
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label >DATE DE DEBUT DE RESERVATION</label>
+      <input type="date" name="dateDebut" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+      <label >DATE DE FIN DE RESERVATION</label>
+      <input type="date" name="dateFin" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+      <label >NOM DE LA MANISFESTATION</label>
+      <input type="text" name="nomManifestation" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+      <label >NOM DU CLIENT OU DE L'ORGANISATION</label>
+      <input type="text" name="nomClient" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+      <label >ADRESSE DU CLIENT OU DE L'ORGANISATION</label>
+      <input type="text" name="adressClient" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+      <label >NOMBRE DE PERSONNE A RECEVOIR</label>
+      <input type="number" name="nbrPerso" class="form-control" >
+    </div>
+    <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+  </form>
+
+</div>
+<script src="/js/bootstrap.bundle.min.js"/>
+</body>
+</html>

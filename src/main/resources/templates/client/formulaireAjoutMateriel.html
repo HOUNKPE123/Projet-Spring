@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"  >
+
+</head>
+<body>
+<div class="container">
+    <h2> FORMULAIRE D'AJOUT DE MATERIEL</h2>
+    <form th:action="@{/ajoutMateriel/save}" th:object="${uneReservation}" method="post">
+
+        <div class="col-md-4">
+            <input type="hidden" th:value="${uneReservation.id}" name="reservationId" class="form-control" >
+        </div>
+
+        <!--<div class="col-md-4">
+            <input type="hidden"  name="id" class="form-control" >
+        </div>-->
+
+        <div class="col-md-4">
+            <input type="hidden"  name="prix" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <div class="form-group">
+                <label>Materiel</label>
+                <select class="form-control" name="materielId" required  placeholder="Cliquer pour chercher" >
+                    <option value="">--Selectionner le materiel souhaité--</option>
+                    <option th:each="materiel:${listeMateriel}"
+                            th:value="${materiel.id}"
+                            th:text="${materiel.nom}">
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!--<div class="mb-3">
+            <label >DATE DE DEBUT DE RESERVATION</label>
+            <input type="date" name="dateDebut" class="form-control" >
+        </div>-->
+
+
+        <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+    </form>
+
+</div>
+<script src="/js/bootstrap.bundle.min.js"/>
+</body>
+</html>
